@@ -15,20 +15,23 @@ class Blink extends Component {
   }
 
   render() {
-    let pic = {
-      uri: 'https://media-cdn.tripadvisor.com/media/photo-s/11/ff/07/4b/sweet-potato-spotted.jpg'
+    let pics = {
+      uri: this.props.pic
     }
+    let display= this.state.isShowing;
 
-    let display= this.state.isShowing ? this.props.text : '';
+   if (display) {
+     return(
 
+       <View>
+       <Text>{ this.props.text }</Text>
+       <Image source={ pics } style={{width: 193, height: 110}}/>
+       </View>
+     );
+   } else {
+      return null;
+   }
 
-
-    return(
-      <View>
-      <Text>{ display }</Text>
-      <Image source={ pic } style={{width: 193, height: 110}}/>
-      </View>
-    );
   }
 }
 
@@ -38,7 +41,8 @@ export default class BlinkOwls extends Component {
   render(){
     return(
       <View>
-        <Blink text='Hello' />
+        <Blink text='Hello'
+                pic='https://media-cdn.tripadvisor.com/media/photo-s/11/ff/07/4b/sweet-potato-spotted.jpg'/>
       </View>
     )
   }
